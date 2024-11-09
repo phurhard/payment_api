@@ -1,7 +1,9 @@
 import bodyParser from 'body-parser';
 import express, { Application, NextFunction, Request, Response } from "express";
 import { NotFoundError } from "./utils/ApiError";
-import { ErrorHandler } from './utils/middlewares/ErrorHandler';
+import { ErrorHandler } from './middlewares/ErrorHandler';
+import config from './config/config';
+import connection from './utils/database';
 
 
 const app: Application = express();
@@ -38,6 +40,19 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
   ErrorHandler.handle(err, req, res, next);
 });
 
-app.listen(3000, () => {
-	console.log('Server running on port 3000...');
-});
+const PORT = config.appPort || 3000;
+
+
+
+const startServer = async () => {
+	try{
+		connection.sync();
+		app.listen(PORT, () => {
+			console.log(`Server running on port ${PORT}...`);
+		});
+	} catch (error) {
+		console.error(`Error occurred: ${error}`);
+	}
+}
+
+startServer()
