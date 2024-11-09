@@ -4,6 +4,8 @@ import { NotFoundError } from "./utils/ApiError";
 import { ErrorHandler } from './middlewares/ErrorHandler';
 import config from './config/config';
 import connection from './utils/database';
+import { StatusCodes } from 'http-status-codes';
+import router from './routes';
 
 
 const app: Application = express();
@@ -27,10 +29,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.get("/", (req: Request, res: Response) => {
-	res.status(200).json({
+	res.status(StatusCodes.OK).json({
 		message: 'Hello World!',
 	});
 });
+
+app.use('/api', router);
 
 app.use((req: Request) => {
 	throw new NotFoundError(req.path);
