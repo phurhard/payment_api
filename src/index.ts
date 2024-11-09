@@ -9,12 +9,19 @@ const app: Application = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get("/", (req: Request, res: Response) => {
-	throw new BadRequestError('User not found');
-	res.status(200).json({
-		success: true,
-		message: 'Hello world!',
-	});
+app.get("/", (req: Request, res: Response, next) => {
+	try {
+		// Simulate some logic that could throw an error
+		if (true) { // Replace with actual condition
+			throw new BadRequestError('User not found');
+		}
+		res.status(200).json({
+			success: true,
+			message: 'Hello world!',
+		});
+	} catch (error) {
+		next(error);
+	}
 });
 
 app.use((req: Request) => {
