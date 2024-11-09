@@ -53,6 +53,7 @@ class PaystackController {
             defaults: { amount, email, name, paymentReference },
         });
 
+        // Provide service for user here
         return res.status(StatusCodes.OK).send({
             message: 'Payment verified',
             data: donation,

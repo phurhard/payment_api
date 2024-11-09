@@ -1,5 +1,3 @@
-import { performServerHandshake } from "http2";
-
 export const snakeToCamelCase = (str: string): string =>
     str.replace(/([-_][a-z0-9])/gi, ($1) =>
         $1.toUpperCase().replace('-', '').replace('_', '')

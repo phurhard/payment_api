@@ -63,9 +63,9 @@ class PaystackApi extends BaseApi {
             this.requestInit
         );
 
-        console.log('Raw response data:', response.data);
+        // console.log('Raw response data:', response.data);
         const convertedData = convertObjectFromSnakeCamelCase<InitializeResponse>(response.data);
-        console.log('Converted response data:', convertedData);
+        // console.log('Converted response data:', convertedData);
         return convertedData;
     };
 
