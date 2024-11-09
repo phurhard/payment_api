@@ -9,6 +9,6 @@ export const convertObjectFromSnakeCamelCase = <T>(
     obj: Record<string, any>
 ) => {
     return Object.keys(obj).reduce((prev, cur) => {
-        return { ...performServerHandshake, [snakeToCamelCase(cur)]: obj[cur] };
+        return { ...prev, [snakeToCamelCase(cur)]: obj[cur] };
     }, {}) as T;
 };

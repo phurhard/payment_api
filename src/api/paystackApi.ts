@@ -63,7 +63,10 @@ class PaystackApi extends BaseApi {
             this.requestInit
         );
 
-        return convertObjectFromSnakeCamelCase<InitializeResponse>(response.data);
+        console.log('Raw response data:', response.data);
+        const convertedData = convertObjectFromSnakeCamelCase<InitializeResponse>(response.data);
+        console.log('Converted response data:', convertedData);
+        return convertedData;
     };
 
     verifyPayment = (paymentReference: string) => this.get<VerifyPaymentResponse>(`/transaction/verify/${paymentReference}`);
