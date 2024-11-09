@@ -69,7 +69,12 @@ class PaystackApi extends BaseApi {
         return convertedData;
     };
 
-    verifyPayment = (paymentReference: string) => this.get<VerifyPaymentResponse>(`/transaction/verify/${paymentReference}`);
+    verifyPayment = (paymentReference: string) => 
+        this.get<VerifyPaymentResponse>(
+            `/transaction/verify/${paymentReference}`,
+            undefined,
+            this.requestInit
+        );
 }
 
 const paystackApi = new PaystackApi();
