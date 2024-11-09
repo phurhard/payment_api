@@ -1,4 +1,3 @@
-import { BodyInit } from "node-fetch";
 import { BadRequestError } from "../utils/ApiError";
 import { StatusCodes } from "http-status-codes";
 
