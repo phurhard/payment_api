@@ -28,7 +28,9 @@ app.use((req: Request) => {
 	throw new NotFoundError(req.path);
 });
 
-app.use(ErrorHandler.handle);
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  ErrorHandler.handle(err, req, res, next);
+});
 
 app.listen(3000, () => {
 	console.log('Server running on port 3000...');
