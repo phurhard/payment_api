@@ -2,7 +2,6 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { ApiError } from '../ApiError';
 
-
 export class ErrorHandler {
 	static handle = (
 		err: ApiError,
@@ -17,4 +16,3 @@ export class ErrorHandler {
 		});
 	};
 }
-

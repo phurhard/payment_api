@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  postgres:
+    container_name: postgres
+    image: postgres:16-alpine
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./pgdata:/data/pgdata:ro
+    env_file:
+      - .env
+    networks:
+      - web
+
+  payment_service:
+    container_name: payment_service
+    depends_on:
+      - postgres
+    build: .
+    volumes:
+      - ./:/usr/src/app
+    ports:
+      - "5000:5000"
+    command: ["npm", "run", "dev"]
+    networks:
+      - web
+    restart: on-failure
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    links:
+      - postgres
+    ports:
+      - "8080:80"
+    volumes:
+      - ./pgadmin:/root/.pgadmin:ro
+    env_file:
+      - .env
+    networks:
+      - web
+  
+networks:
+  web:
+    driver: bridge
