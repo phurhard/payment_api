@@ -17,9 +17,10 @@ const VerifyPaymentPage: React.FC = () => {
                     if (res.ok) {
                         const data = await res.json();
                         setResponse(data);
-                        navigate('/success'); // Redirect to a success page or handle success
+                        alert('/success'); // Redirect to a success page or handle success
+                    } else {
                         console.error('Failed to verify payment:', res.statusText);
-                        navigate('/failure'); // Redirect to a failure page or handle failure
+                        alert('/failure'); // Redirect to a failure page or handle failure
                     }
                 } catch (error) {
                     console.error('Error verifying payment:', error);
