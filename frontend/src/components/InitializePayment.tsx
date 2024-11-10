@@ -19,7 +19,7 @@ const InitializePayment: React.FC = () => {
             });
             if (res.ok) {
                 const data = await res.json();
-                if (data && data.data && data.data.authorizationUrl) {
+                if (data && data.type && data.data && data.data.authorizationUrl) {
                     window.location.href = data.data.authorizationUrl;
                 } else {
                     console.error('Unexpected response structure:', data);
