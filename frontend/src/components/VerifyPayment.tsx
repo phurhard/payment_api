@@ -20,7 +20,7 @@ const VerifyPayment: React.FC = () => {
             <h2>Verify Payment</h2>
             <input type="text" value={reference} onChange={(e) => setReference(e.target.value)} placeholder="Reference" required />
             <button onClick={handleVerify}>Verify Payment</button>
-            {response && <div>{JSON.stringify(response)}</div>}
+            {response ? <div>{JSON.stringify(response)}</div> : <div>No response received yet.</div>}
         </div>
     );
 };

@@ -35,7 +35,7 @@ const InitializePayment: React.FC = () => {
                 <input type="url" value={callbackUrl} onChange={(e) => setCallbackUrl(e.target.value)} placeholder="Callback URL" />
                 <button type="submit">Initialize Payment</button>
             </form>
-            {response && <div>{JSON.stringify(response)}</div>}
+            {response ? <div>{JSON.stringify(response)}</div> : <div>No response received yet.</div>}
         </div>
     );
 };
