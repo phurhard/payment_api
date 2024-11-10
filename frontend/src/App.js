@@ -7,7 +7,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <h1>Payment App</h1>
+        {/* <h1>Payment App</h1> */}
         <Routes>
           <Route path="/" element={<InitializePayment />} />
           <Route path="/verify-payment" element={<VerifyPaymentPage />} />
