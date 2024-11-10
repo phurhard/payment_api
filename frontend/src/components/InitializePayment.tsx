@@ -4,11 +4,11 @@ import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { Button } from "../../src/ui/button.tsx"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../src/ui/card.tsx"
-import { Input } from "../../src/ui/input.tsx"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../src/ui/form.tsx"
-import { toast } from "../../src/ui/use-toast.tsx"
+import { Button } from "../ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../ui/card"
+import { Input } from "../ui/input"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../ui/form"
+import { toast } from "../ui/use-toast"
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -63,7 +63,7 @@ const InitializePayment: React.FC = () => {
   }
 
   return (
-    <Card className="w-full max-w-md mx-auto">
+    <Card className="w-full max-w-md mx-auto p-4 shadow-lg rounded-lg">
       <CardHeader>
         <CardTitle>Make a Payment</CardTitle>
         <CardDescription>Enter your details to process the payment.</CardDescription>
