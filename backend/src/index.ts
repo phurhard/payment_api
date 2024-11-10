@@ -1,3 +1,4 @@
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import express, { Application, NextFunction, Request, Response } from "express";
 import { NotFoundError } from "./utils/ApiError";
@@ -10,6 +11,7 @@ import router from './routes';
 
 const app: Application = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
