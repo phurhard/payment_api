@@ -8,12 +8,12 @@ import { Donation } from "../models/Donation";
 
 class PaystackController {
     initializePayment = asyncWrapper(async (req: Request, res: Response) => {
-        const { amount, email, callbackUrl, name } = req.body;
+        const { amount, email, callback_url, name } = req.body;
 
         const paymentDetails: InitializePaymentArgs = {
             amount,
             email,
-            callback_url: callbackUrl,
+            callback_url,
             metadata: {
                 amount,
                 email,
