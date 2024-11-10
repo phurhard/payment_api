@@ -6,7 +6,7 @@ const VerifyPayment: React.FC = () => {
 
     const handleVerify = async () => {
         try {
-            const res = await fetch(`/api/paystack/verify?reference=${reference}`);
+            const res = await fetch(`http://localhost:5000/api/paystack/verify?reference=${reference}`);
             const data = await res.json();
             setResponse(data);
         } catch (error) {
