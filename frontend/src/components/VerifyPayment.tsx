@@ -7,8 +7,12 @@ const VerifyPayment: React.FC = () => {
     const handleVerify = async () => {
         try {
             const res = await fetch(`http://localhost:5000/api/paystack/verify?reference=${reference}`);
-            const data = await res.json();
-            setResponse(data);
+            if (res.ok) {
+                const data = await res.json();
+                setResponse(data);
+            } else {
+                setResponse({ error: 'Failed to verify payment' });
+            }
         } catch (error) {
             console.error('Error verifying payment:', error);
             setResponse({ error: 'Failed to verify payment' });

@@ -17,8 +17,12 @@ const InitializePayment: React.FC = () => {
                 },
                 body: JSON.stringify({ email, amount: parseInt(amount), name, callbackUrl }),
             });
-            const data = await res.json();
-            setResponse(data);
+            if (res.ok) {
+                const data = await res.json();
+                setResponse(data);
+            } else {
+                setResponse({ error: 'Failed to initialize payment' });
+            }
         } catch (error) {
             console.error('Error initializing payment:', error);
             setResponse({ error: 'Failed to initialize payment' });
