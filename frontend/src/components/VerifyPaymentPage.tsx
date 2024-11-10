@@ -32,10 +32,15 @@ const VerifyPaymentPage: React.FC = () => {
         }
     }, [location.search]);
 
+    const handleBackToInitialize = () => {
+        navigate('/');
+    };
+
     return (
         <div>
             <h2>Verifying Payment...</h2>
             {response ? <div>{JSON.stringify(response)}</div> : <div>Loading...</div>}
+            <button onClick={handleBackToInitialize}>Back to Initialize Payment</button>
         </div>
     );
 };
