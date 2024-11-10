@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 const VerifyPaymentPage: React.FC = () => {
@@ -42,10 +43,28 @@ const VerifyPaymentPage: React.FC = () => {
     };
 
     return (
-        <div>
-            <h2>Verifying Payment...</h2>
-            {response ? <div>{JSON.stringify(response)}</div> : <div>Loading...</div>}
-            <button onClick={handleBackToInitialize}>Back to Initialize Payment</button>
+        <div className="container mt-5">
+            <div className="row justify-content-center">
+                <div className="col-md-8">
+                    <div className="card bg-dark text-white">
+                        <div className="card-body">
+                            <h2 className="card-title text-center">Verifying Payment...</h2>
+                            {response ? (
+                                <div className="card-text">
+                                    <pre className="bg-light text-dark p-3 rounded">
+                                        {JSON.stringify(response, null, 2)}
+                                    </pre>
+                                </div>
+                            ) : (
+                                <div className="text-center">Loading...</div>
+                            )}
+                            <button className="btn btn-light mt-3 w-100" onClick={handleBackToInitialize}>
+                                Back to Initialize Payment
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
