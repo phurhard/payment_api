@@ -9,13 +9,13 @@ const InitializePayment: React.FC = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         try {
-            const callbackUrl = `http://localhost:3001/verify-payment`;
+            const callback_url = `http://localhost:3001/verify-payment`;
             const res = await fetch('http://localhost:5000/api/paystack/initialize', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ email, amount: parseInt(amount), name, callback_url: callbackUrl }),
+                body: JSON.stringify({ email, amount: parseInt(amount), name, callback_url }),
             });
             if (res.ok) {
                 const data = await res.json();
