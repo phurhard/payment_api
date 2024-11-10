@@ -21,6 +21,7 @@ class PaystackController {
             },
         };
 
+        console.log('Initializing payment with details:', paymentDetails);
         const data = await paystackApi.initializePayment(paymentDetails);
 
         return res.status(StatusCodes.OK).send({
