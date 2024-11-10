@@ -4,11 +4,11 @@ import { useState } from "react"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
-import { Button } from "../../src/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "../../src/ui/card"
-import { Input } from "../../src/ui/input"
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../src/ui/form"
-import { toast } from "../../src/ui/use-toast"
+import { Button } from "../../src/ui/button.tsx"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../src/ui/card.tsx"
+import { Input } from "../../src/ui/input.tsx"
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "../../src/ui/form.tsx"
+import { toast } from "../../src/ui/use-toast.tsx"
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
