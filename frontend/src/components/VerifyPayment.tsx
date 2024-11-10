@@ -9,8 +9,14 @@ const VerifyPayment: React.FC = () => {
             const res = await fetch(`http://localhost:5000/api/paystack/verify?reference=${reference}`);
             if (res.ok) {
                 const data = await res.json();
-                setResponse(data);
+                if (data && data.type) {
+                    setResponse(data);
+                } else {
+                    console.error('Unexpected response structure:', data);
+                    setResponse({ error: 'Unexpected response structure' });
+                }
             } else {
+                console.error('Failed to verify payment:', res.statusText);
                 setResponse({ error: 'Failed to verify payment' });
             }
         } catch (error) {

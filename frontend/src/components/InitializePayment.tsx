@@ -19,8 +19,14 @@ const InitializePayment: React.FC = () => {
             });
             if (res.ok) {
                 const data = await res.json();
-                setResponse(data);
+                if (data && data.type) {
+                    setResponse(data);
+                } else {
+                    console.error('Unexpected response structure:', data);
+                    setResponse({ error: 'Unexpected response structure' });
+                }
             } else {
+                console.error('Failed to initialize payment:', res.statusText);
                 setResponse({ error: 'Failed to initialize payment' });
             }
         } catch (error) {
