@@ -1,6 +1,6 @@
 import React from 'react';
-import InitializePayment from './components/InitializePayment';
-import VerifyPayment from './components/VerifyPayment';
+import InitializePayment from './components/InitializePayment.tsx';
+import VerifyPayment from './components/VerifyPayment.tsx';
 
 const App = () => {
   return (
