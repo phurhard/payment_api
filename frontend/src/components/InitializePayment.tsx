@@ -19,8 +19,8 @@ const InitializePayment: React.FC = () => {
             });
             if (res.ok) {
                 const data = await res.json();
-                if (data && data.type) {
-                    setResponse(data);
+                if (data && data.data && data.data.authorizationUrl) {
+                    window.location.href = data.data.authorizationUrl;
                 } else {
                     console.error('Unexpected response structure:', data);
                     setResponse({ error: 'Unexpected response structure' });
