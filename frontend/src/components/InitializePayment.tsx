@@ -45,7 +45,7 @@ const InitializePayment: React.FC = () => {
                 <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
                 <button type="submit">Initialize Payment</button>
             </form>
-            {response ? <div>{JSON.stringify(response)}</div> : <div>No response received yet.</div>}
+            {response && <div>{JSON.stringify(response)}</div>}
         </div>
     );
 };
