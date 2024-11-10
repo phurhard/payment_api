@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const VerifyPaymentPage: React.FC = () => {
     const [response, setResponse] = useState<any>(null);
     const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const queryParams = new URLSearchParams(location.search);
@@ -16,9 +17,9 @@ const VerifyPaymentPage: React.FC = () => {
                     if (res.ok) {
                         const data = await res.json();
                         setResponse(data);
-                    } else {
+                        navigate('/success'); // Redirect to a success page or handle success
                         console.error('Failed to verify payment:', res.statusText);
-                        setResponse({ error: 'Failed to verify payment' });
+                        navigate('/failure'); // Redirect to a failure page or handle failure
                     }
                 } catch (error) {
                     console.error('Error verifying payment:', error);
