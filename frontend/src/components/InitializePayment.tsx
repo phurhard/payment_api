@@ -19,7 +19,7 @@ const InitializePayment: React.FC = () => {
             });
             if (res.ok) {
                 const data = await res.json();
-                if (data && data.data && data.data.authorizationUrl) {
+                if (data?.data?.authorizationUrl) {
                     const redirectUrl = `${data.data.authorizationUrl}`;
                     window.location.href = redirectUrl;
                 } else {
