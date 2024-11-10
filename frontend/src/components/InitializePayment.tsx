@@ -20,7 +20,8 @@ const InitializePayment: React.FC = () => {
             if (res.ok) {
                 const data = await res.json();
                 if (data && data.data && data.data.authorizationUrl) {
-                    window.location.href = data.data.authorizationUrl;
+                    const redirectUrl = `${data.data.authorizationUrl}&callback_url=http://localhost:3001/verify-payment?reference=${data.data.reference}`;
+                    window.location.href = redirectUrl;
                 } else {
                     console.error('Unexpected response structure:', data);
                     setResponse({ error: 'Unexpected response structure' });
